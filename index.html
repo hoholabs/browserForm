@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>browserForm</title>
-    <link rel = "stylesheet" href = "style.css">
-</head>
-<body>
-    
-    <div id = "default-div"></div>
 
-    <script src = "main.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>browserForm</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="default-div">
+        <form novalidate>
+            <!-- email -->
+            <label for="email">
+                Email: <br>
+                <input type="email" id="email" name="email" required><br>
+                <span id="email-error-message"></span><br>
+            </label><br>
+            <!-- country -->
+            <label for="country">
+                Country: <br>
+                <input type="text" id="country" name="country" required><br>
+                <span id="country-error-message"></span><br>
+            </label><br>
+            <!-- zip code -->
+            <label for="zip">
+                Zip code: <br>
+                <input type="text" id="zip" name="zip" required><br>
+                <span id="zip-error-message"></span><br>
+            </label><br>
+            <!-- password -->
+            <label for="password">
+                Password: <br>
+                <input type="text" id="password" name="password" required><br>
+                <span id="password-error-message"></span><br>
+            </label><br>
+            <!-- re-enter password -->
+            <label for="repassword">
+                Re-enter password: <br>
+                <input type="text" id="repassword" name="repassword" required><br>
+                <span id="repassword-error-message"></span><br>
+            </label><br>
+            <!-- submit -->
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <script src="main.js"></script>
 </body>
+
 </html>

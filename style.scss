@@ -1,3 +1,18 @@
-:root{
-    background-color:grey;
+:root {
+    background-color: grey;
+}
+
+form {
+    display: inline-block;
+    border: solid red 2px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.invalid {
+    background-color: red;
+}
+
+.valid {
+    background-color: green;
 }
