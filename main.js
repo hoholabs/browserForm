@@ -1,21 +1,37 @@
 const defaultDiv = document.getElementById('default-div');
-
 const form = document.getElementById('form');
+let inputs = document.querySelectorAll('input');
+
+//create variables for inputs and errors
+inputs.forEach((element) => {
+    window[element.id + 'Input'] = document.getElementById(element.id);
+    window[element.id + 'Error'] = document.getElementById(
+        element.id + '-error-message'
+    );
+});
+
+//remove error when focusing
+inputs.forEach((element) => {
+    element.addEventListener('focus', () => {
+        let error = element.parentNode.querySelector('span');
+        error.textContent = '';
+        element.classList.remove('valid');
+        element.classList.remove('invalid');
+    });
+});
 
 //EMAIL
-const emailInput = document.getElementById('email');
-const emailError = document.getElementById('email-error-message');
 
 //validate on leaving the box
-email.addEventListener('blur', () => {
-    if (email.validity.valid) {
+emailInput.addEventListener('blur', () => {
+    if (emailInput.validity.valid) {
         emailError.textContent = '';
-        email.classList.add('valid');
+        emailInput.classList.add('valid');
     } else {
-        email.classList.add('invalid');
-        if (email.validity.valueMissing) {
+        emailInput.classList.add('invalid');
+        if (emailInput.validity.valueMissing) {
             emailError.textContent = 'Email required';
-        } else if (email.validity.typeMismatch) {
+        } else if (emailInput.validity.typeMismatch) {
             emailError.textContent = 'Valid email required';
         } else {
             emailError.textContent = 'Error';
@@ -24,17 +40,15 @@ email.addEventListener('blur', () => {
 });
 
 //COUNTRY
-const countryInput = document.getElementById('country');
-const countryError = document.getElementById('country-error-message');
 
 //validate on leaving the box
-country.addEventListener('blur', () => {
-    if (country.validity.valid) {
+countryInput.addEventListener('blur', () => {
+    if (countryInput.validity.valid) {
         countryError.textContent = '';
-        country.classList.add('valid');
+        countryInput.classList.add('valid');
     } else {
-        country.classList.add('invalid');
-        if (country.validity.valueMissing) {
+        countryInput.classList.add('invalid');
+        if (countryInput.validity.valueMissing) {
             countryError.textContent = 'Country required';
         } else {
             countryError.textContent = 'Error';
@@ -43,18 +57,18 @@ country.addEventListener('blur', () => {
 });
 
 //ZIP CODE
-const zipInput = document.getElementById('zip');
-const zipError = document.getElementById('zip-error-message');
 
 //validate on leaving the box
-zip.addEventListener('blur', () => {
-    if (zip.validity.valid) {
+zipInput.addEventListener('blur', () => {
+    if (zipInput.validity.valid) {
         zipError.textContent = '';
-        zip.classList.add('valid');
+        zipInput.classList.add('valid');
     } else {
-        zip.classList.add('invalid');
-        if (zip.validity.valueMissing) {
+        zipInput.classList.add('invalid');
+        if (zipInput.validity.valueMissing) {
             zipError.textContent = 'Zip Code required';
+        } else if (zipInput == NaN) {
+            zipError.textContent = 'not a number';
         } else {
             zipError.textContent = 'Error';
         }
@@ -62,17 +76,15 @@ zip.addEventListener('blur', () => {
 });
 
 //PASSWORD
-const passwordInput = document.getElementById('password');
-const passwordError = document.getElementById('password-error-message');
 
 //validate on leaving the box
-password.addEventListener('blur', () => {
-    if (password.validity.valid) {
+passwordInput.addEventListener('blur', () => {
+    if (passwordInput.validity.valid) {
         passwordError.textContent = '';
-        password.classList.add('valid');
+        passwordInput.classList.add('valid');
     } else {
-        password.classList.add('invalid');
-        if (password.validity.valueMissing) {
+        passwordInput.classList.add('invalid');
+        if (passwordInput.validity.valueMissing) {
             passwordError.textContent = 'Password required';
         } else {
             passwordError.textContent = 'Error';
@@ -80,35 +92,19 @@ password.addEventListener('blur', () => {
     }
 });
 
-//RE-PASSWORD
-const repasswordInput = document.getElementById('repassword');
-const repasswordError = document.getElementById('repassword-error-message');
+// RE-PASSWORD
 
 //validate on leaving the box
-repassword.addEventListener('blur', () => {
-    if (repassword.validity.valid) {
+repasswordInput.addEventListener('blur', () => {
+    if (repasswordInput.validity.valid) {
         repasswordError.textContent = '';
-        repassword.classList.add('valid');
+        repasswordInput.classList.add('valid');
     } else {
         repassword.classList.add('invalid');
-        if (repassword.validity.valueMissing) {
+        if (repasswordInput.validity.valueMissing) {
             repasswordError.textContent = 'Re-Enter password required';
         } else {
             repasswordError.textContent = 'Error';
         }
     }
-});
-
-//
-//
-//
-//
-//remove error when focusing
-
-//////(change to do to all fields later) /////
-
-email.addEventListener('focus', () => {
-    emailError.textContent = '';
-    email.classList.remove('valid');
-    email.classList.remove('invalid');
 });

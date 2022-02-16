@@ -1,18 +1,29 @@
 :root {
     background-color: grey;
+    --color1: rgb(255, 218, 255);
+    --color2: rgb(62, 9, 70) 2px;
 }
 
-form {
+#form {
     display: inline-block;
-    border: solid red 2px;
+    color: var(--color2);
+    background-color: var(--color1);
+    border: solid var(--color2);
     padding: 10px;
     border-radius: 10px;
-}
 
+    input {
+        //background-color: white;
+        border: solid var(--color2);
+        color: var(--color2);
+        border-radius: 5px;
+    }
+}
 .invalid {
-    background-color: red;
+    background-color: rgb(240, 126, 126);
+    border: rgb(240, 126, 126);
 }
 
 .valid {
-    background-color: green;
+    background-color: rgb(177, 236, 177);
 }
