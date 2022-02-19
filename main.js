@@ -15,6 +15,7 @@ inputs.forEach((element) => {
     element.addEventListener('focus', () => {
         let error = element.parentNode.querySelector('span');
         error.textContent = '';
+        element.setCustomValidity('');
         element.classList.remove('valid');
         element.classList.remove('invalid');
     });
@@ -62,11 +63,12 @@ countryInput.addEventListener('blur', () => {
 zipInput.addEventListener('blur', () => {
     if (zipInput.value.length != 5) {
         zipInput.classList.add('invalid');
-        zipError.setCustomValidity('5 digit zip code only');
+        zipInput.setCustomValidity('5 digit zip code only');
         zipError.textContent = '5 digit zip code only';
     } else if (isNaN(zipInput.value)) {
+        console.log(zipInput.value);
         zipInput.classList.add('invalid');
-        zipError.setCustomValidity('Numbers only');
+        zipInput.setCustomValidity('Numbers only');
         zipError.textContent = 'Numbers only';
     } else if (zipInput.validity.valid) {
         zipError.textContent = '';
@@ -105,8 +107,8 @@ passwordInput.addEventListener('blur', () => {
 //validate on leaving the box
 repasswordInput.addEventListener('blur', () => {
     if (repassword.value !== password.value) {
-        repassword.classList.add('invalid');
-        repassword.setCustomValidity('Password does not match');
+        repasswordInput.classList.add('invalid');
+        repasswordInput.setCustomValidity('Password does not match');
         repasswordError.textContent = 'Password does not match';
     } else if (repasswordInput.validity.valid) {
         repasswordError.textContent = '';
@@ -118,5 +120,14 @@ repasswordInput.addEventListener('blur', () => {
         } else {
             repasswordError.textContent = 'Error';
         }
+    }
+});
+
+let submitButton = document.getElementById('submit-button');
+
+submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (form.reportValidity()) {
+        window.alert('high5');
     }
 });
