@@ -60,7 +60,15 @@ countryInput.addEventListener('blur', () => {
 
 //validate on leaving the box
 zipInput.addEventListener('blur', () => {
-    if (zipInput.validity.valid) {
+    if (zipInput.value.length != 5) {
+        zipInput.classList.add('invalid');
+        zipError.setCustomValidity('5 digit zip code only');
+        zipError.textContent = '5 digit zip code only';
+    } else if (isNaN(zipInput.value)) {
+        zipInput.classList.add('invalid');
+        zipError.setCustomValidity('Numbers only');
+        zipError.textContent = 'Numbers only';
+    } else if (zipInput.validity.valid) {
         zipError.textContent = '';
         zipInput.classList.add('valid');
     } else {
@@ -96,7 +104,11 @@ passwordInput.addEventListener('blur', () => {
 
 //validate on leaving the box
 repasswordInput.addEventListener('blur', () => {
-    if (repasswordInput.validity.valid) {
+    if (repassword.value !== password.value) {
+        repassword.classList.add('invalid');
+        repassword.setCustomValidity('Password does not match');
+        repasswordError.textContent = 'Password does not match';
+    } else if (repasswordInput.validity.valid) {
         repasswordError.textContent = '';
         repasswordInput.classList.add('valid');
     } else {
